@@ -1,0 +1,143 @@
+{
+  "device": "RTX 4060 Laptop 8GB",
+  "protocol": "OSEDiff LoRA on SD2.1-base, scene prompts instead of RAM/DAPE, upscale=1, tile 512/64",
+  "eval_dir": "赛题一/验证集",
+  "results": [
+    {
+      "backend": "osediff_raw",
+      "count": 5,
+      "total_sec": 144.63,
+      "sec_per_image": 28.93,
+      "peak_vram_gb": 3.03,
+      "mean": {
+        "psnr": 23.215571534790712,
+        "ssim": 0.7396382420545737
+      },
+      "unofficial_score": 0.6051042046985273,
+      "per_image_metrics": [
+        {
+          "psnr": 23.91949749485976,
+          "ssim": 0.9156744361074143,
+          "name": "case1"
+        },
+        {
+          "psnr": 23.215371769638157,
+          "ssim": 0.75769890357533,
+          "name": "case2"
+        },
+        {
+          "psnr": 26.133732583050925,
+          "ssim": 0.8775954496916762,
+          "name": "case3"
+        },
+        {
+          "psnr": 17.269075025462417,
+          "ssim": 0.2729417432685142,
+          "name": "case4"
+        },
+        {
+          "psnr": 25.540180800942306,
+          "ssim": 0.8742806776299342,
+          "name": "case5"
+        }
+      ],
+      "per_image_time": [
+        {
+          "name": "case1",
+          "scene": "text",
+          "sec": 37.77
+        },
+        {
+          "name": "case2",
+          "scene": "text",
+          "sec": 27.65
+        },
+        {
+          "name": "case3",
+          "scene": "bird",
+          "sec": 26.9
+        },
+        {
+          "name": "case4",
+          "scene": "plant",
+          "sec": 26.08
+        },
+        {
+          "name": "case5",
+          "scene": "clock",
+          "sec": 26.23
+        }
+      ],
+      "output_dir": "data/outputs/phase1/osediff_raw",
+      "fidelity_fuse": false
+    },
+    {
+      "backend": "osediff_fuse",
+      "count": 5,
+      "total_sec": 138.16,
+      "sec_per_image": 27.63,
+      "peak_vram_gb": 3.03,
+      "mean": {
+        "psnr": 28.029679413892087,
+        "ssim": 0.7805912048729703
+      },
+      "unofficial_score": 0.6755187938918936,
+      "per_image_metrics": [
+        {
+          "psnr": 31.555282697140754,
+          "ssim": 0.9505917520476822,
+          "name": "case1"
+        },
+        {
+          "psnr": 28.799003260093773,
+          "ssim": 0.8352799104618094,
+          "name": "case2"
+        },
+        {
+          "psnr": 35.11189388452193,
+          "ssim": 0.9328615532158485,
+          "name": "case3"
+        },
+        {
+          "psnr": 18.059576855077353,
+          "ssim": 0.30922698345677696,
+          "name": "case4"
+        },
+        {
+          "psnr": 26.622640372626623,
+          "ssim": 0.8749958251827344,
+          "name": "case5"
+        }
+      ],
+      "per_image_time": [
+        {
+          "name": "case1",
+          "scene": "text",
+          "sec": 31.5
+        },
+        {
+          "name": "case2",
+          "scene": "text",
+          "sec": 26.62
+        },
+        {
+          "name": "case3",
+          "scene": "bird",
+          "sec": 26.75
+        },
+        {
+          "name": "case4",
+          "scene": "plant",
+          "sec": 26.65
+        },
+        {
+          "name": "case5",
+          "scene": "clock",
+          "sec": 26.64
+        }
+      ],
+      "output_dir": "data/outputs/phase1/osediff_fuse",
+      "fidelity_fuse": true
+    }
+  ]
+}

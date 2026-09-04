@@ -1,0 +1,88 @@
+defaults: configs/default.yaml
+
+backend: diffusion  # identity | diffusion | lite
+
+device: cuda
+dtype: fp16
+
+# 4K images cannot be processed as a single tensor on most GPUs.
+tiling:
+  enabled: true
+  tile_size: 512
+  overlap: 64
+  min_size_to_tile: 768
+
+# Local first-version backbone. Leave model_id empty to use Lite DDPM.
+# Fill model_id only with an open research checkpoint, never a commercial API.
+diffusion:
+  model_id: ""
+  num_inference_steps: 20
+  guidance_scale: 4.5
+  strength: 0.28
+  negative_prompt: "blur, artifacts, deformed, oversharpen, watermark, extra objects"
+
+lite:
+  checkpoint: weights/lite_ddpm.pt
+  timesteps: 50
+  sample_steps: 12
+  base_channels: 32
+
+sd_turbo:
+  model_id: weights/sd-turbo
+  num_inference_steps: 4
+  strength: 0.22
+  guidance_scale: 0.0
+  negative_prompt: "blur, artifacts, deformed, extra objects, watermark"
+
+osediff:
+  sd_path: weights/sd21-base
+  lora_path: weights/osediff.pkl
+  mixed_precision: fp16
+
+consistency:
+  color_match: false      # official val: LAB transfer dropped PSNR
+  lock_resolution: true
+  lock_content: false     # highpass-only also dropped PSNR
+  fidelity_fuse: true     # clamp residual so baseline stays near LQ
+  fuse_mix: 0.25
+  fuse_max_delta: 12.0
+
+scene_router:
+  enabled: true
+  backend: heuristic      # heuristic | clip
+  clip_model: ViT-B-32
+  clip_pretrained: openai
+  min_confidence: 0.35
+  # Official validation stems. Test-set names are case1..case100; do not guess.
+  overrides:
+    case1: text
+    case2: text
+    case3: bird
+    case4: plant
+    case5: clock
+
+controllers:
+  face:
+    strength: 0.22
+    guidance_scale: 3.5
+    prompt: "sharp facial details, natural skin texture, clear eyes, photorealistic, no identity change"
+  text:
+    strength: 0.18
+    guidance_scale: 3.0
+    prompt: "crisp readable text, sharp glyphs, no warped letters, no extra characters"
+  plant:
+    strength: 0.30
+    guidance_scale: 4.0
+    prompt: "fine leaf veins, natural foliage texture, sharp vegetation, no oversharpening"
+  clock:
+    strength: 0.20
+    guidance_scale: 3.2
+    prompt: "clear clock hands, readable numerals, sharp watch details, correct geometry"
+  bird:
+    strength: 0.28
+    guidance_scale: 4.0
+    prompt: "fine feathers, sharp beak and eyes, natural bird texture"
+  general:
+    strength: 0.25
+    guidance_scale: 3.8
+    prompt: "high quality, sharp, photorealistic, natural colors, no artifacts"

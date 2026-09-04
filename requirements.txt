@@ -1,0 +1,17 @@
+# Core
+numpy>=1.24
+pillow>=10.0
+opencv-python>=4.8
+pyyaml>=6.0
+tqdm>=4.66
+scikit-image>=0.22
+
+# Optional runtime (install when running real Diffusion inference)
+# torch>=2.2
+# torchvision>=0.17
+# diffusers>=0.27
+# transformers>=4.40
+# accelerate>=0.28
+# open-clip-torch>=2.24
+# lpips>=0.1.4
+# piq>=0.8

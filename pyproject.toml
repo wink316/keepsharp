@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "keepsharp"
+version = "0.1.0"
+description = "keepsharp: fidelity-first controllable Diffusion enhancement for Camera Academic Star 2026 Track 1"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "pillow>=10.0",
+    "opencv-python>=4.8",
+    "pyyaml>=6.0",
+    "tqdm>=4.66",
+    "scikit-image>=0.22",
+]
+
+[project.optional-dependencies]
+torch = [
+    "torch>=2.2",
+    "torchvision>=0.17",
+    "diffusers>=0.27",
+    "transformers>=4.40",
+    "accelerate>=0.28",
+    "peft>=0.10",
+]
+eval = [
+    "lpips>=0.1.4",
+    "piq>=0.8",
+]
+scene = [
+    "open-clip-torch>=2.24",
+]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

@@ -1,0 +1,58 @@
+# Agent scratch notes (not part of the project)
+.learnings/
+docs/teammates.md
+
+# Local-only run logs
+data/outputs/**/infer_summary.json
+scripts/_smoke_osediff.py
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.env.*
+.python-version
+.pytest_cache/
+
+# Official contest images — Huawei-owned, contest-only. Never push.
+赛题一/
+data/evaluation/lq/*
+data/evaluation/gt/*
+data/test/*
+
+# Inference pixels and submission zips (may contain official images)
+data/outputs/**/*.jpg
+data/outputs/**/*.jpeg
+data/outputs/**/*.png
+data/train_synth/
+/outputs/
+/submissions/
+*.zip
+
+# Large / third-party checkpoints (download locally)
+weights/**
+!weights/.gitkeep
+!weights/README.md
+checkpoints/
+hf_cache/
+.cache/
+
+# Secrets and local identity
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Notebooks / logs
+.ipynb_checkpoints/
+logs/
+*.log

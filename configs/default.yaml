@@ -1,0 +1,39 @@
+competition:
+  id: "532499"
+  name: "生成式图像增强可控性挑战"
+  track: 1
+  official_url: "https://tianchi.aliyun.com/competition/entrance/532499/information"
+
+paths:
+  eval_lq: 赛题一/验证集
+  eval_gt: 赛题一/验证集
+  test_lq: 赛题一/测试集
+  output_dir: data/outputs
+  weights_dir: weights
+  submission_dir: submissions
+
+scenes:
+  - face
+  - text
+  - plant
+  - clock
+  - bird
+
+# Local proxy only. Official Score weights are announced after finalists.
+metrics:
+  full_reference: [psnr, ssim, lpips]
+  no_reference: [niqe]
+  unofficial_weights:
+    psnr: 0.25
+    ssim: 0.25
+    lpips: 0.30
+    niqe: 0.20
+
+submit:
+  zip_prefix: "赛题一"
+  work_name: "keepsharp"
+  team_name: "your_team"
+  phone: "13000000000"
+  max_zip_gb: 10
+  image_ext: ".jpg"
+  jpeg_quality: 95

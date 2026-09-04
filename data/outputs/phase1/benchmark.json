@@ -1,0 +1,39 @@
+{
+  "device": "RTX 4060 Laptop 8GB",
+  "eval_dir": "赛题一/验证集",
+  "protocol": "PSNR/SSIM vs official GT. LQ floor is raw LQ, not color-matched identity.",
+  "val_scenes": {
+    "case1": "printed Chinese text",
+    "case2": "bookshelf mixed CN/EN text",
+    "case3": "bird on mudflat",
+    "case4": "dense foliage",
+    "case5": "architectural clock"
+  },
+  "results": [
+    {
+      "backend": "raw_lq",
+      "role": "scientific fidelity floor, not submittable",
+      "mean": {"psnr": 28.03442004401453, "ssim": 0.7776988190033721},
+      "sec_per_image": null,
+      "peak_vram_gb": 0.0
+    },
+    {
+      "backend": "lite_raw",
+      "role": "unfused local DDPM, inferior to LQ",
+      "mean": {"psnr": 27.648734980396263, "ssim": 0.7423834273312915},
+      "sec_per_image": 28.68,
+      "peak_vram_gb": 0.31
+    },
+    {
+      "backend": "lite_fuse_m25_d12",
+      "role": "handoff baseline",
+      "mean": {"psnr": 28.00351438271327, "ssim": 0.7755807227486741},
+      "sec_per_image": 28.68,
+      "peak_vram_gb": 0.31
+    },
+    {
+      "backend": "sd_turbo",
+      "error": "HuggingFace Xet 401 Unauthorized when downloading stabilityai/sd-turbo"
+    }
+  ]
+}
